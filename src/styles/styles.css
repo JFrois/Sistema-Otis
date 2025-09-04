@@ -1,0 +1,44 @@
+/* ============================================= */
+/* 1. RESET E VARIÁVEIS GLOBAIS                  */
+/* ============================================= */
+
+/* Reset básico para consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos Globais do Body */
+body {
+    background-color: var(--bg-light-gray);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================= */
+/* 2. ESTILOS PARA FORMULÁRIOS (LOGIN/CADASTRO)  */
+/* ============================================= */
+
+/* Container principal dos formulários */
+.form-container {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15
+}

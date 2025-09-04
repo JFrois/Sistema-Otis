@@ -1,0 +1,30 @@
+/* ============================================= */
+/* ARQUIVO CENTRAL DE CORES DO PROJETO           */
+/* ============================================= */
+
+:root {
+  /* Cores Primárias e de Ação */
+  --color-primary: #007bff;      /* Azul principal para botões, links e destaques */
+  --color-primary-dark: #0056b3; /* Variação mais escura para hover de botões */
+  --color-secondary: #6c757d;    /* Cinza secundário para informações de apoio */
+
+  /* Cores de Feedback do Sistema */
+  --color-success: #28a745;     /* Verde para mensagens de sucesso */
+  --color-danger: #dc3545;      /* Vermelho para alertas e erros */
+  --color-warning: #ffc107;     /* Amarelo para avisos */
+
+  /* Tons de Fundo (Background) */
+  --bg-dark-primary: #1a1a1a;      /* Fundo escuro principal (ex: formulários) */
+  --bg-dark-secondary: #2c2c2c;  /* Fundo escuro para inputs e elementos internos */
+  --bg-light: #f0f2f5;           /* Fundo claro principal da página (ex: dashboard) */
+  --bg-surface: #ffffff;          /* Fundo branco para cards e seções em fundos claros */
+  
+  /* Cores de Texto */
+  --text-on-dark: #f8f9fa;       /* Texto claro para ser usado em fundos escuros */
+  --text-on-light: #212529;      /* Texto escuro para ser usado em fundos claros */
+  --text-muted: #6c757d;         /* Texto cinza para placeholders e labels */
+  
+  /* Cores de UI (Interface de Usuário) */
+  --border-color: #495057;       /* Cor de borda para inputs em temas escuros */
+  --border-color-light: #dee2e6; /* Cor de borda para elementos em temas claros */
+}

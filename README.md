@@ -1,6 +1,5 @@
 # Challenge Otis | FIAP - Engenharia de Software 2025
 
-
 ## 🚀 Sobre o Projeto
 
 Este projeto foi desenvolvido como parte do Challenge da FIAP em parceria com a **Otis**, líder mundial na fabricação, instalação e manutenção de elevadores, escadas e esteiras rolantes.
@@ -28,7 +27,7 @@ Para solucionar essa questão, propomos o desenvolvimento de um **sistema web ce
 ### Principais Funcionalidades
 
 **Gestão de Pedidos:** Cadastro e gerenciamento centralizado dos pedidos dos clientes.
-**Acompanhamento Real-time:** Visualização em tempo real de todas as etapas do pedido].
+**Acompanhamento Real-time:** Visualização em tempo real de todas as etapas do pedido.
 **Monitoramento da Produção:** Acompanhamento do processo de fabricação dos equipamentos.
 **Gestão de Clientes:** Consulta e gerenciamento das informações dos clientes.
 **Canal de Feedback:** Coleta e análise de feedbacks para a melhoria contínua dos processos e da experiência do cliente.
@@ -59,7 +58,7 @@ Este projeto foi idealizado e desenvolvido pelos seguintes alunos de Engenharia 
 
 ---
 
-##  timelines Projeto
+## timelines Projeto
 
 **Fase 1:** 19 de abril de 2025 a 26 de maio de 2025<br>
 **Fase 2:** 19 de agosto de 2025 a 08 de setembro de 2025
