@@ -1,5 +1,4 @@
 import React from 'react';
-// Corrigindo o caminho da importação para ser mais explícito
 import Header from '../components/Header.jsx';
 
 /**

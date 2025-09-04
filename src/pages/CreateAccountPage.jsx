@@ -85,7 +85,6 @@ function CriarConta({ onAddUser }) {
         }
     };
 
-    // O resto do seu JSX continua o mesmo
     return (
         <main className="form-container">
             <div className="form-header">

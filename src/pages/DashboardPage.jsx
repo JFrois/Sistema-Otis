@@ -3,8 +3,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import StatusBar from '../components/StatusBar';
 import CasesGrid from '../components/CasesGrid';
-import '../styles/dashboard.css'; // Importe o CSS específico
-
+import '../styles/dashboard.css';
 function DashboardPage() {
   return (
     <div className="dashboard-container">

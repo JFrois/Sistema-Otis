@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faEyeSlash, faCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
-// Renomeei o componente para LoginPage para manter a consistência
 function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -30,7 +29,7 @@ function LoginPage({ onLogin }) {
     const loginSuccess = onLogin(formData); // A função onLogin agora vem do App.jsx
 
     if (loginSuccess) {
-      navigate('/dashboard'); // Redireciona para o dashboard em caso de sucesso
+      navigate('/dashboard'); 
     } else {
       alert('E-mail ou senha incorretos. Tente novamente.');
     }
@@ -40,7 +39,6 @@ function LoginPage({ onLogin }) {
     <main className="form-container">
       <div className="form-header">
         <h1 className="form-title">Login</h1>
-        {/* ESTA É A ALTERAÇÃO PRINCIPAL */}
         {/* O Link envolve o botão e o leva para a rota /criar-conta */}
         <Link to="/criar-conta" className="btn-default" title="Criar uma nova conta">
           <FontAwesomeIcon icon={faUserPlus} />
