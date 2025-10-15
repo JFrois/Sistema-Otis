@@ -145,32 +145,49 @@ function CriarConta({ onAddUser }) {
                         Eu li e aceito os <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer">termos de uso</a>
                     </label>
                 </div>
-
                 <div className="radio-group">
                     <p className="form-label">Identificação:</p>
+
+                    {/* Opção 1 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="gerente_vendas" value="gerente_vendas" checked={formData.userType === 'consumidor'} onChange={handleChange} />
-                        <label htmlFor="consumidor" className="form-label">Gerente Vendas</label>
+                        <input type="radio" name="userType" id="gerente_vendas" value="gerente_vendas"
+                            checked={formData.userType === 'gerente_vendas'} onChange={handleChange} />
+                        <label htmlFor="gerente_vendas" className="form-label">Gerente Vendas</label>
                     </div>
+
+                    {/* Opção 2 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="vendedor" value="vendedor" checked={formData.userType === 'consumidor'} onChange={handleChange} />
-                        <label htmlFor="consumidor" className="form-label">Vendedor</label>
+                        <input type="radio" name="userType" id="vendedor" value="vendedor"
+                            checked={formData.userType === 'vendedor'} onChange={handleChange} />
+                        <label htmlFor="vendedor" className="form-label">Vendedor</label>
                     </div>
+
+                    {/* Opção 3 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="gerente_logistica" value="gerente_logistica" checked={formData.userType === 'consumidor'} onChange={handleChange} />
-                        <label htmlFor="consumidor" className="form-label">Gerente Logística</label>
+                        <input type="radio" name="userType" id="gerente_logistica" value="gerente_logistica"
+                            checked={formData.userType === 'gerente_logistica'} onChange={handleChange} />
+                        <label htmlFor="gerente_logistica" className="form-label">Gerente Logística</label>
                     </div>
+
+                    {/* Opção 4 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="logistica" value="logistica" checked={formData.userType === 'consumidor'} onChange={handleChange} />
-                        <label htmlFor="consumidor" className="form-label">Logística</label>
+                        <input type="radio" name="userType" id="logistica" value="logistica"
+                            checked={formData.userType === 'logistica'} onChange={handleChange} />
+                        <label htmlFor="logistica" className="form-label">Logística</label>
                     </div>
+
+                    {/* Opção 5 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="gerente_producao" value="gerente_producao" checked={formData.userType === 'consumidor'} onChange={handleChange} />
-                        <label htmlFor="consumidor" className="form-label">Gerente de Produção</label>
+                        <input type="radio" name="userType" id="gerente_producao" value="gerente_producao"
+                            checked={formData.userType === 'gerente_producao'} onChange={handleChange} />
+                        <label htmlFor="gerente_producao" className="form-label">Gerente de Produção</label>
                     </div>
+
+                    {/* Opção 6 */}
                     <div className="radio-option">
-                        <input type="radio" name="userType" id="producao" value="producao" checked={formData.userType === 'agricultor'} onChange={handleChange} />
-                        <label htmlFor="agricultor" className="form-label">Produção</label>
+                        <input type="radio" name="userType" id="producao" value="producao"
+                            checked={formData.userType === 'producao'} onChange={handleChange} />
+                        <label htmlFor="producao" className="form-label">Produção</label>
                     </div>
                 </div>
 

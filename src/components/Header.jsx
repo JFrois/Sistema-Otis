@@ -1,29 +1,29 @@
+// src/components/Header.jsx (Atualizado)
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'; 
+import '../styles/dashboard.css';
 
-/**
- * Componente de cabeçalho com os links de navegação para o painel.
- */
 function Header() {
+  const location = useLocation(); 
+
   return (
     <header className="dashboard-header">
-      <nav className="nav-menu">
-        {/* O botão "Início" leva para o painel principal (pesquisa) */}
-        <Link to="/dashboard" className="nav-button">
-          Início
-        </Link>
-        {/* O botão "Casos" também leva para o painel principal (pesquisa) */}
-        <Link to="/dashboard" className="nav-button">
-          Casos
-        </Link>
-        {/* O botão "Relatórios" leva para a página de relatórios */}
-        <Link to="/relatorios" className="nav-button">
+      {/* ... (header-logo) ... */}
+      <nav className="header-nav">
+        <a
+          href="/dashboard"
+          className={location.pathname === '/dashboard' ? 'nav-link active' : 'nav-link'}
+        >
+          Dashboard
+        </a>
+        <a
+          href="/relatorios"
+          className={location.pathname === '/relatorios' ? 'nav-link active' : 'nav-link'}
+        >
           Relatórios
-        </Link>
+        </a>
       </nav>
-      <div className="user-profile">
-        {/* Este é o círculo para o perfil do usuário */}
-      </div>
+      {/* ... (header-user) ... */}
     </header>
   );
 }

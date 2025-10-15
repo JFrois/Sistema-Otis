@@ -1,18 +1,22 @@
 import React from 'react';
+import '../styles/dashboard.css';
+import { statusSteps } from '../data/mockData'; 
 
 function StatusBar() {
-  // No futuro, você pode controlar o status ativo com estado (useState)
-  const totalSteps = 8;
+  // Exemplo: definir qual passo está "ativo". Isso viria dos dados reais no futuro.
+  const currentStatus = "Fabricação";
+  const activeIndex = statusSteps.indexOf(currentStatus);
 
   return (
     <div className="status-bar-container">
-      <p>Status por atividade</p>
-      <div className="status-bar">
-        {[...Array(totalSteps)].map((_, index) => (
-           // Adiciona a classe 'active' para estilizar o progresso
-          <div key={index} className={`step ${index < 3 ? 'active' : ''}`}></div>
-        ))}
-      </div>
+      {statusSteps.map((step, index) => (
+        <div
+          key={step}
+          className={`status-step ${index <= activeIndex ? 'active' : ''}`}
+        >
+          {step}
+        </div>
+      ))}
     </div>
   );
 }

@@ -1,25 +1,24 @@
 import React from 'react';
 import CaseCard from './CaseCard';
+import '../styles/dashboard.css';
+import { statusSteps } from '../data/mockData';
 
-function CasesGrid() {
-  const sections = ['Vendas', 'Produção', 'Instalação', 'Relacionamento com cliente'];
-
+function CasesGrid({ cases, onCardClick }) { 
   return (
     <div className="cases-grid-container">
-      <h3>Informações dos casos por área</h3>
-      {sections.map(section => (
-        <section key={section} className="case-section">
-          <h4>{section}</h4>
+      {statusSteps.map(status => (
+        <section key={status} className="case-section">
+          <h3>{status}</h3>
           <div className="cards-container">
-            {/* Exemplo: Renderizando 5 cards por seção */}
-            {[...Array(5)].map((_, index) => (
-              <CaseCard key={index} id={`ID-${section.slice(0,3)}-00${index + 1}`} />
-            ))}
+            {cases
+              .filter(caseItem => caseItem.status === status)
+              .map(caseItem => (
+                <CaseCard key={caseItem.id} caseData={caseItem} onCardClick={onCardClick} />
+              ))}
           </div>
         </section>
       ))}
     </div>
   );
 }
-
 export default CasesGrid;

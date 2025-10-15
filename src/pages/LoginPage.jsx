@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import FeedbackMessage from '../components/FeedbackMessage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faEyeSlash, faCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 function LoginPage({ onLogin }) {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [feedback, setFeedback] = useState({ message: '', type: '' });
+  const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
+    setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
   const togglePasswordVisibility = () => {
@@ -25,74 +21,74 @@ function LoginPage({ onLogin }) {
   };
 
   const handleSubmit = (e) => {
+    // 1. IMPEDE O RECARREGAMENTO DA PÁGINA
     e.preventDefault();
-    const loginSuccess = onLogin(formData); // A função onLogin agora vem do App.jsx
 
-    if (loginSuccess) {
-      navigate('/dashboard'); 
-    } else {
-      alert('E-mail ou senha incorretos. Tente novamente.');
-    }
+    setIsLoading(true);
+    setFeedback({ message: '', type: '' });
+
+    setTimeout(() => {
+      const loginSuccess = onLogin(formData);
+
+      if (loginSuccess) {
+        // 2. SE O LOGIN ESTIVER CORRETO, NAVEGA PARA O DASHBOARD
+        navigate('/dashboard');
+      } else {
+        setFeedback({ message: 'E-mail ou senha incorretos.', type: 'error' });
+        setIsLoading(false);
+      }
+    }, 500);
   };
 
   return (
-    <main className="form-container">
-      <div className="form-header">
-        <h1 className="form-title">Login</h1>
-        {/* O Link envolve o botão e o leva para a rota /criar-conta */}
-        <Link to="/criar-conta" className="btn-default" title="Criar uma nova conta">
-          <FontAwesomeIcon icon={faUserPlus} />
-        </Link>
-      </div>
+    <main className="login-wrapper">
+      <div className="login-card">
+        <div className="card-header">
+          <h2>Acesso ao Sistema</h2>
+          <p>Monitore suas instalações em tempo real.</p>
+        </div>
 
-      <form className="login-form" onSubmit={handleSubmit}>
-        <div className="input-box">
-          <label htmlFor="email" className="form-label">E-mail</label>
-          <div className="input-field">
+        {/* 3. CONECTA O FORMULÁRIO À FUNÇÃO handleSubmit */}
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <i className="fas fa-envelope"></i>
             <input
               type="email"
               name="email"
-              id="email"
-              className="form-control"
-              placeholder="exemplo@gmail.com"
+              placeholder="Seu usuário (admin@otis.com)"
               value={formData.email}
               onChange={handleChange}
               required
             />
-            <FontAwesomeIcon icon={faEnvelope} />
           </div>
-        </div>
-
-        <div className="input-box">
-          <label htmlFor="password" className="form-label">Senha</label>
-          <div className="input-field">
+          <div className="input-group">
+            <i className="fas fa-lock"></i>
             <input
               type={isPasswordVisible ? 'text' : 'password'}
               name="password"
-              id="password"
-              className="form-control"
-              placeholder="*******"
+              placeholder="Sua senha (admin)"
               value={formData.password}
               onChange={handleChange}
               required
             />
             <FontAwesomeIcon
               icon={isPasswordVisible ? faEye : faEyeSlash}
-              className="password-icon"
               onClick={togglePasswordVisibility}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', position: 'absolute', right: '15px', top: '50%', transform: 'translateY(-50%)', color: '#aaa' }}
             />
           </div>
-        </div>
+          {/* 4. O BOTÃO É DO TIPO "SUBMIT" PARA ACIONAR O onSubmit DO FORMULÁRIO */}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Entrando...' : 'Entrar'}
+          </button>
+        </form>
 
-        <button type="submit" className="btn-default">
-          <FontAwesomeIcon icon={faCheck} />
-          <span>Logar</span>
-        </button>
-      </form>
+        <div className="card-footer">
+          <FeedbackMessage message={feedback.message} type={feedback.type} />
+        </div>
+      </div>
     </main>
   );
 }
 
 export default LoginPage;
-

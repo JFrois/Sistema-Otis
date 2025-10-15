@@ -1,13 +1,12 @@
 import React from 'react';
+import '../styles/dashboard.css';
 
-// Aceita 'props' para exibir informações dinâmicas no futuro
-function CaseCard({ title, id }) {
+function CaseCard({ caseData, onCardClick }) {
   return (
-    <div className="case-card">
-      <p className="case-id">{id || 'ID do Caso'}</p>
-      <h4 className="case-title">{title || 'Título do Caso'}</h4>
+    <div className="case-card" onClick={() => onCardClick(caseData)}>
+      <h4>{caseData.title}</h4>
+      <p>{caseData.client}</p>
     </div>
   );
 }
-
 export default CaseCard;

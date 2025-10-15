@@ -1,44 +1,166 @@
-/* ============================================= */
-/* 1. RESET E VARIÁVEIS GLOBAIS                  */
-/* ============================================= */
-
-/* Reset básico para consistência entre navegadores */
+/* --- Reset Básico e Estilos Globais --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Estilos Globais do Body */
 body {
-    background-color: var(--bg-light-gray);
-    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+/* --- Container Principal --- */
+.login-wrapper {
     width: 100%;
+    padding: 20px;
 }
 
-a {
-    color: var(--color-primary);
-    text-decoration: none;
+/* --- Card de Login --- */
+.login-card {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-a:hover {
-    text-decoration: underline;
+.card-header .logo {
+    max-width: 120px;
+    margin-bottom: 20px;
 }
 
-/* ============================================= */
-/* 2. ESTILOS PARA FORMULÁRIOS (LOGIN/CADASTRO)  */
-/* ============================================= */
+.card-header h2 {
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #002d72;
+    /* Azul escuro da Otis */
+}
 
-/* Container principal dos formulários */
-.form-container {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15
+.card-header p {
+    font-size: 14px;
+    color: #667;
+    margin-bottom: 30px;
+}
+
+/* --- Grupo de Inputs --- */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    /* Espaço para o ícone */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #0056b3;
+    /* Azul mais forte da Otis */
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* --- Botão de Login --- */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+}
+
+/* --- Rodapé do Card e Mensagens --- */
+.card-footer {
+    margin-top: 20px;
+    height: 20px;
+    /* Espaço reservado para a mensagem */
+}
+
+#message {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.feedback-message {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.feedback-message.success {
+    background-color: #d4edda;
+    /* Verde claro */
+    color: #155724;
+    /* Verde escuro */
+    border: 1px solid #c3e6cb;
+}
+
+.feedback-message.error {
+    background-color: #f8d7da;
+    /* Vermelho claro */
+    color: #721c24;
+    /* Vermelho escuro */
+    border: 1px solid #f5c6cb;
+}
+
+
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    /* Permite que o usuário redimensione verticalmente */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.input-group i {
+    /* Ajuste para o ícone do textarea ficar alinhado no topo */
+    align-self: flex-start;
+    padding-top: 14px;
 }
