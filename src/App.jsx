@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccountPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
 import ReportePage from './pages/ReportePage.jsx';
+import FormContact from './pages/FormContact.jsx';
 
 function App() {
   const [users, setUsers] = useState([{ email: 'admin@otis.com', password: 'admin' }]);
@@ -50,6 +51,11 @@ function App() {
       <Route
         path="/relatorios"
         element={isAuthenticated ? <ReportePage onLogout={handleLogout} /> : <Navigate to="/login" />}
+      />
+
+      <Route 
+        path="/contato"
+        element={isAuthenticated ? <FormContact onLogout={handleLogout} /> : <Navigate to="/login" />}
       />
 
       <Route

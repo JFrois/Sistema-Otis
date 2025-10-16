@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+// 1. Importar useNavigate para a navegação
+import { useNavigate } from 'react-router-dom'; 
 import emailjs from '@emailjs/browser';
 import FeedbackMessage from '../components/FeedbackMessage'; 
 import '../styles/styles.css'; 
 
-function FormularioContato() {
+function FormContact() {
+    // 2. Inicializar o hook useNavigate
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [feedback, setFeedback] = useState({ message: '', type: '' }); 
@@ -34,6 +39,13 @@ function FormularioContato() {
                 setIsSubmitting(false);
             });
     };
+    
+    // Função para voltar para o dashboard
+    const handleGoBack = () => {
+        // Redireciona para a rota /dashboard
+        navigate('/dashboard'); 
+        // Alternativamente, se quiser voltar para a página anterior, use: navigate(-1);
+    };
 
     return (
         <main className="login-wrapper">
@@ -44,6 +56,8 @@ function FormularioContato() {
                 </div>
 
                 <form id="form" onSubmit={handleSubmit}>
+                    {/* ... Campos de Input (Nome, Email, Mensagem) ... */}
+                    
                     {/* Campo Nome com Label */}
                     <div className="input-group">
                         <label htmlFor="name" style={{ display: 'none' }}>Nome</label>
@@ -92,9 +106,20 @@ function FormularioContato() {
                             style={{ paddingTop: '12px', height: 'auto' }}
                         ></textarea>
                     </div>
-
+                    
+                    {/* Botão de Enviar */}
                     <button type="submit" disabled={isSubmitting}>
                         {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                    </button>
+                    
+                    {/* 3. NOVO: Botão de Voltar para o Dashboard */}
+                    <button 
+                        type="button" // Use type="button" para evitar que ele tente enviar o formulário
+                        onClick={handleGoBack}
+                        // Adicione um estilo ou classe para separar/diferenciar este botão do de envio
+                        style={{ marginTop: '10px', backgroundColor: '#6c757d' }} 
+                    >
+                        Voltar para Dashboard
                     </button>
                 </form>
 
@@ -107,4 +132,4 @@ function FormularioContato() {
     );
 }
 
-export default FormularioContato;
+export default FormContact;
