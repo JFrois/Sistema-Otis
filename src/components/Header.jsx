@@ -29,6 +29,12 @@ function Header() {
         >
           Contato
         </Link>
+          <Link
+          to="/perfil" // Nova rota de contato
+          className={location.pathname === '/contato' ? 'nav-link active' : 'nav-link'}
+        >
+          Perfil
+        </Link>
       </nav>
       {/* ... (header-user) ... */}
     </header>

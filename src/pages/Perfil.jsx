@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./perfil.css";
+import Header from "../components/Header";
+import Swal from "sweetalert2";
 
-function Perfil({ user }) {
+function Perfil({ user, onLogout }) {
+  const navigate = useNavigate();
+
   const [dados, setDados] = useState({
     nome: user?.nome || "",
     setor: user?.setor || "",
@@ -27,8 +32,32 @@ function Perfil({ user }) {
     Swal.fire("Sucesso!", "Dados salvos com sucesso.", "success");
   };
 
+  const handleLogoutClick = () => {
+    Swal.fire({
+      title: "Você tem certeza?",
+      text: "Sua sessão será encerrada.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sim, sair!",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Chama a função de logout passada pelo componente pai
+        if (onLogout) onLogout();
+
+        // Mostra alerta de confirmação e redireciona
+        Swal.fire("Sessão encerrada!", "Você saiu do perfil.", "success").then(() => {
+          navigate("/"); // Redireciona para a página inicial
+        });
+      }
+    });
+  };
+
   return (
     <div className="perfil-container">
+      <Header />
       <h1>Perfil do Usuário</h1>
 
       <div className="perfil-form">
@@ -60,6 +89,9 @@ function Perfil({ user }) {
         />
 
         <button onClick={handleSalvar}>Salvar</button>
+        <button id="sair" onClick={handleLogoutClick}>
+          Sair
+        </button>
       </div>
     </div>
   );
