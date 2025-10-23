@@ -9,16 +9,16 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f0f4f8;
     color: #333;
+}
+
+
+.login-wrapper {
+    width: 100%;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-}
-
-/* --- Container Principal --- */
-.login-wrapper {
-    width: 100%;
-    padding: 20px;
 }
 
 /* --- Card de Login --- */
@@ -42,7 +42,6 @@ body {
     font-size: 24px;
     margin-bottom: 5px;
     color: #002d72;
-    /* Azul escuro da Otis */
 }
 
 .card-header p {
@@ -51,7 +50,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* --- Grupo de Inputs --- */
 .input-group {
     position: relative;
     margin-bottom: 20px;
@@ -68,7 +66,6 @@ body {
 .input-group input {
     width: 100%;
     padding: 12px 15px 12px 40px;
-    /* Espaço para o ícone */
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
@@ -78,7 +75,6 @@ body {
 .input-group input:focus {
     outline: none;
     border-color: #0056b3;
-    /* Azul mais forte da Otis */
     box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
 }
 
@@ -149,7 +145,6 @@ button:hover {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
     resize: vertical;
-    /* Permite que o usuário redimensione verticalmente */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -160,7 +155,6 @@ button:hover {
 }
 
 .input-group i {
-    /* Ajuste para o ícone do textarea ficar alinhado no topo */
     align-self: flex-start;
     padding-top: 14px;
 }

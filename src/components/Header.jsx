@@ -1,21 +1,19 @@
-// src/components/Header.jsx (Melhorado)
+// src/components/Header.jsx (Corrigido)
 import React from 'react';
-// IMPORTANTE: Importar Link junto com useLocation
-import { useLocation, Link } from 'react-router-dom'; 
+import { useLocation, Link } from 'react-router-dom';
 import '../styles/dashboard.css';
 
 function Header() {
-  const location = useLocation(); 
+  const location = useLocation();
 
   return (
     <header className="dashboard-header">
-      {/* ... (header-logo) ... */}
       <nav className="header-nav">
-        <Link // Usar Link ao invés de <a>
-          to="/dashboard" // Usar 'to' ao invés de 'href'
+        <Link
+          to="/dashboard"
           className={location.pathname === '/dashboard' ? 'nav-link active' : 'nav-link'}
         >
-          Dashboard
+          Início
         </Link>
         <Link
           to="/relatorios"
@@ -24,19 +22,18 @@ function Header() {
           Relatórios
         </Link>
         <Link
-          to="/contato" // Nova rota de contato
+          to="/contato"
           className={location.pathname === '/contato' ? 'nav-link active' : 'nav-link'}
         >
           Contato
         </Link>
-          <Link
-          to="/perfil" // Nova rota de contato
-          className={location.pathname === '/contato' ? 'nav-link active' : 'nav-link'}
+        <Link
+          to="/perfil"
+          className={location.pathname === '/perfil' ? 'nav-link active' : 'nav-link'}
         >
           Perfil
         </Link>
       </nav>
-      {/* ... (header-user) ... */}
     </header>
   );
 }

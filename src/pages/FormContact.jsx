@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-// 1. Importar useNavigate para a navegação
-import { useNavigate } from 'react-router-dom'; 
-import emailjs from '@emailjs/browser';
-import FeedbackMessage from '../components/FeedbackMessage'; 
-import '../styles/styles.css'; 
+import { useNavigate } from 'react-router-dom';
+import FeedbackMessage from '../components/FeedbackMessage';
+import '../styles/styles.css';
+
+import { casesData } from '../data/mockData.js';
 
 function FormContact() {
-    // 2. Inicializar o hook useNavigate
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [formData, setFormData] = useState({
+        projetoId: '',
+        tipoFeedback: 'Dúvida', // Valor padrão
+        area: 'Vendas',         // Valor padrão
+        mensagem: ''
+    });
+
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [feedback, setFeedback] = useState({ message: '', type: '' }); 
+    const [feedback, setFeedback] = useState({ message: '', type: '' });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,109 +26,126 @@ function FormContact() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setFeedback({ message: '', type: '' }); 
+        setFeedback({ message: '', type: '' });
 
-        const serviceID = "service_ekgmlsj";
-        const templateID = "template_00gm37s";
+        console.log("Feedback Estruturado Enviado:", formData);
 
-        emailjs.send(serviceID, templateID, formData)
-            .then(() => {
-                setFeedback({ message: 'Mensagem enviada com sucesso!', type: 'success' });
-                setFormData({ name: '', email: '', message: '' }); 
-            })
-            .catch((error) => {
-                console.error('FAILED...', error);
-                setFeedback({ message: 'Falha ao enviar. Tente novamente mais tarde.', type: 'error' });
-            })
-            .finally(() => {
-                setIsSubmitting(false);
-            });
+        setTimeout(() => {
+            setFeedback({ message: 'Feedback enviado com sucesso! (Simulação)', type: 'success' });
+            setFormData({ projetoId: '', tipoFeedback: 'Dúvida', area: 'Vendas', mensagem: '' });
+            setIsSubmitting(false);
+
+        }, 1000);
     };
-    
-    // Função para voltar para o dashboard
+
     const handleGoBack = () => {
-        // Redireciona para a rota /dashboard
-        navigate('/dashboard'); 
-        // Alternativamente, se quiser voltar para a página anterior, use: navigate(-1);
+        navigate('/dashboard');
     };
 
     return (
         <main className="login-wrapper">
             <div className="login-card">
                 <div className="card-header">
-                    <h2>Entre em Contato</h2>
-                    <p>Tem alguma dúvida ou sugestão? Nos envie uma mensagem!</p>
+                    <h2>Registrar Feedback de Projeto</h2>
+                    <p>Nos ajude a melhorar nossos processos e seu acompanhamento.</p>
                 </div>
 
                 <form id="form" onSubmit={handleSubmit}>
-                    {/* ... Campos de Input (Nome, Email, Mensagem) ... */}
-                    
-                    {/* Campo Nome com Label */}
+
                     <div className="input-group">
-                        <label htmlFor="name" style={{ display: 'none' }}>Nome</label>
-                        <i className="fas fa-user"></i>
-                        <input
-                            id="name"
-                            name="name"
-                            type="text"
-                            placeholder="Seu nome"
-                            value={formData.name}
+                        <label htmlFor="projetoId" style={{ fontSize: '0.8rem', color: '#6c757d', marginBottom: '5px', display: 'block' }}>
+                            Selecione o Projeto:
+                        </label>
+                        <select
+                            id="projetoId"
+                            name="projetoId"
+                            value={formData.projetoId}
                             onChange={handleChange}
                             disabled={isSubmitting}
                             required
-                        />
+                            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
+                        >
+                            <option value="" disabled>-- Escolha um projeto --</option>
+                            {/* Mapeia os dados do mockData para criar as opções */}
+                            {casesData.map(caseItem => (
+                                <option key={caseItem.id} value={caseItem.id}>
+                                    {caseItem.title} (Cliente: {caseItem.client})
+                                </option>
+                            ))}
+                        </select>
                     </div>
-                    {/* Campo Email com Label */}
+
+                    <div className="input-group" style={{ textAlign: 'left', paddingBottom: '10px' }}>
+                        <label style={{ fontSize: '0.8rem', color: '#6c757d', marginBottom: '10px', display: 'block' }}>
+                            Tipo de Feedback:
+                        </label>
+                        <div>
+                            <input type="radio" id="tipo-duvida" name="tipoFeedback" value="Dúvida" checked={formData.tipoFeedback === 'Dúvida'} onChange={handleChange} />
+                            <label htmlFor="tipo-duvida" style={{ marginRight: '15px' }}> Dúvida</label>
+
+                            <input type="radio" id="tipo-problema" name="tipoFeedback" value="Problema" checked={formData.tipoFeedback === 'Problema'} onChange={handleChange} />
+                            <label htmlFor="tipo-problema" style={{ marginRight: '15px' }}> Problema</label>
+
+                            <input type="radio" id="tipo-elogio" name="tipoFeedback" value="Elogio" checked={formData.tipoFeedback === 'Elogio'} onChange={handleChange} />
+                            <label htmlFor="tipo-elogio"> Elogio</label>
+                        </div>
+                    </div>
+
+                    {/* 6. ÁREA RELACIONADA (SELECT) */}
                     <div className="input-group">
-                        <label htmlFor="email" style={{ display: 'none' }}>Email</label>
-                        <i className="fas fa-envelope"></i>
-                        <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            placeholder="Seu email"
-                            value={formData.email}
+                        <label htmlFor="area" style={{ fontSize: '0.8rem', color: '#6c757d', marginBottom: '5px', display: 'block' }}>
+                            Área Relacionada:
+                        </label>
+                        <select
+                            id="area"
+                            name="area"
+                            value={formData.area}
                             onChange={handleChange}
                             disabled={isSubmitting}
                             required
-                        />
+                            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: '1px solid #ccc' }}
+                        >
+                            <option value="Vendas">Vendas</option>
+                            <option value="Fabricação">Fabricação</option>
+                            <option value="Instalação">Equipe de Instalação</option>
+                            <option value="Qualidade">Qualidade</option>
+                            <option value="Outro">Outro</option>
+                        </select>
                     </div>
-                    {/* Campo Mensagem com Label */}
+
+
                     <div className="input-group">
-                        <label htmlFor="message" style={{ display: 'none' }}>Mensagem</label>
-                        <i className="fas fa-comment-dots" style={{ top: '20px' }}></i>
+                        <label htmlFor="message" style={{ fontSize: '0.8rem', color: '#6c757d', marginBottom: '5px', display: 'block' }}>
+                            Sua Mensagem:
+                        </label>
                         <textarea
                             id="message"
-                            name="message"
-                            placeholder="Sua mensagem..."
+                            name="message" 
+                            placeholder="Descreva seu feedback aqui..."
                             minLength="20"
                             maxLength="500"
                             value={formData.message}
                             onChange={handleChange}
                             disabled={isSubmitting}
                             required
-                            rows="5"
-                            style={{ paddingTop: '12px', height: 'auto' }}
+                            rows="4"
+                            style={{ paddingTop: '12px', height: 'auto', width: '100%', boxSizing: 'border-box' }}
                         ></textarea>
                     </div>
-                    
-                    {/* Botão de Enviar */}
+
                     <button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
+                        {isSubmitting ? 'Enviando...' : 'Enviar Feedback'}
                     </button>
-                    
-                    {/* 3. NOVO: Botão de Voltar para o Dashboard */}
-                    <button 
-                        type="button" // Use type="button" para evitar que ele tente enviar o formulário
+
+                    <button
+                        type="button"
                         onClick={handleGoBack}
-                        // Adicione um estilo ou classe para separar/diferenciar este botão do de envio
-                        style={{ marginTop: '10px', backgroundColor: '#6c757d' }} 
+                        style={{ marginTop: '10px', backgroundColor: '#6c757d' }}
                     >
                         Voltar para Dashboard
                     </button>
                 </form>
 
-                {/* 4. Renderizando o feedback aqui */}
                 <div className="card-footer">
                     <FeedbackMessage message={feedback.message} type={feedback.type} />
                 </div>
