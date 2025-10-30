@@ -350,6 +350,49 @@
   margin-bottom: 1rem;
   animation: spin 1s ease infinite;
 }
+.progress-section {
+  margin: 20px 0;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.no-results h3 {
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+
+.no-results p {
+  color: #868e96;
+  margin-bottom: 20px;
+}
+
+.clear-filters-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.clear-filters-btn:hover {
+  background: #0056b3;
+}
+
+.project-stats {
+  font-size: 13px;
+  color: #6c757d;
+  margin: 2px 0;
+}
 
 @keyframes spin {
   0% {

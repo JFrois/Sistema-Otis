@@ -1,0 +1,27 @@
+.project-selector-container {
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.project-selector-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.project-selector {
+  width: 300px;
+  padding: 10px 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.project-selector:focus {
+  outline: none;
+  border-color: #007bff;
+}

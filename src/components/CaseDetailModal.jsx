@@ -7,6 +7,7 @@ const subStatusOptions = [
     "Em andamento",
     "Aguardando cliente",
     "Aguardando Otis",
+    "Concluído",
     "Bloqueado"
 ];
 
