@@ -142,7 +142,7 @@ function FormContact() {
                         onClick={handleGoBack}
                         style={{ marginTop: '10px', backgroundColor: '#6c757d' }}
                     >
-                        Voltar para Dashboard
+                        Voltar para Início
                     </button>
                 </form>
 
